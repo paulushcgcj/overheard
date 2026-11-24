@@ -403,3 +403,5 @@ AGENTS.md
 .ruff_cache/
 .coverage
 htmlcov/
+!
+tests/fixtures/*.wav
