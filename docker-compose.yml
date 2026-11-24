@@ -1,0 +1,15 @@
+services:
+  overheard:
+    image: ghcr.io/paulushcgcj/overheard:latest   # or :latest-accurate for pyannote diarization
+    restart: unless-stopped
+    ports:
+      - "8005:8000"
+    environment:
+      OVERHEARD_WHISPER_MODEL: small      # tiny | base | small | large-v3 (RAM!)
+      OVERHEARD_CPU_THREADS: "4"
+      # OVERHEARD_API_KEY: change-me       # uncomment to require bearer auth
+      # HF_TOKEN: ${HF_TOKEN}              # needed only by the -accurate image
+    volumes:
+      - overheard-data:/data                # named volume keeps image ownership
+volumes:
+  overheard-data:
